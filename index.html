@@ -35,8 +35,17 @@ h2{font-size:clamp(24px,4vw,40px);line-height:1.1;margin:0 0 8px;letter-spacing:
 .tile span{color:var(--muted);font-size:13px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
 .rows{display:flex;flex-direction:column;gap:12px}
-#managers{gap:7px}
+#managers{gap:9px}
 #managers .track{height:20px}
+.track.segs{gap:2px}
+.seg-c{background:var(--accent);border-radius:5px;min-width:3px}
+.seg-u{background:transparent;border:2px solid var(--accent);border-radius:5px;min-width:6px}
+.seg-x{background:var(--muted);opacity:.5;border-radius:5px;min-width:3px}
+.sw.seg-u{background:transparent;border:2px solid var(--accent)}
+.sw.seg-x{background:var(--muted);opacity:.5}
+.tiles.three{grid-template-columns:repeat(3,1fr);margin:0 0 14px}
+.tile .sw{width:11px;height:11px;border-radius:3px;vertical-align:-1px}
+.row .val i.open{color:var(--warn);font-weight:600}
 .row{display:grid;grid-template-columns:150px 1fr 190px;gap:12px;align-items:center}
 .row .name{font-weight:600}
 .row .name i{display:block;font-style:normal;font-weight:400;color:var(--muted);font-size:12.5px}
@@ -77,6 +86,9 @@ nav a.on{background:var(--accent)}
 @media (max-width:760px){
   section{padding:40px 16px 36px}
   .tiles{grid-template-columns:repeat(2,1fr)}
+  .tiles.three{grid-template-columns:1fr;gap:8px}
+  .tiles.three .tile{display:flex;align-items:baseline;gap:10px;padding:10px 14px}
+  .tiles.three .tile b{font-size:22px;white-space:nowrap}
   .row{grid-template-columns:1fr auto;gap:4px 10px}
   .row .track{grid-column:1 / -1;order:3;height:20px}
   .two{grid-template-columns:1fr}
@@ -120,12 +132,17 @@ nav a.on{background:var(--accent)}
 <section>
   <div class="kicker">Менеджеры</div>
   <h2>Касса и продажи по менеджерам</h2>
-  <p class="lead">Длина полосы — сколько оплатили клиенты менеджера, закрашенная часть доходит до школы. Чем больше у менеджера рассрочек Toza, тем больше заштриховано.</p>
+  <p class="lead">Длина полосы — сколько оплатили клиенты менеджера. Закрашено — оплата подтверждена на платформе. Контур — менеджер внёс оплату, аналитик её ещё не подтвердил. Серое — оплата есть у мерчанта или рассрочки, а на платформе её нет.</p>
+  <div class="tiles three">
+    <div class="tile"><b id="stOk"></b><span><i class="sw seg-c"></i> подтверждено · <span id="stOkN"></span></span></div>
+    <div class="tile"><b id="stWait"></b><span><i class="sw seg-u"></i> ждёт подтверждения · <span id="stWaitN"></span></span></div>
+    <div class="tile"><b id="stMiss"></b><span><i class="sw seg-x"></i> нет на платформе · <span id="stMissN"></span></span></div>
+  </div>
   <div class="card">
     <div class="rows" id="managers"></div>
-    <div class="legend"><span><i class="sw"></i>получает школа</span><span><i class="sw fee"></i>процент рассрочки за счёт школы</span></div>
+    <div class="legend"><span><i class="sw seg-c"></i>подтверждено на платформе</span><span><i class="sw seg-u"></i>ждёт подтверждения аналитика</span><span><i class="sw seg-x"></i>оплаты нет на платформе</span></div>
   </div>
-  <p class="foot">Менеджер взят из договора на платформе; если договора там нет — из списка фин-отдела. «Без менеджера» — доплаты по июльским договорам, где менеджер на платформе не назначен. «Не определён» — два договора Uzum Nasiya, которых нет на платформе.</p>
+  <p class="foot">Статус — по панели «Финансы» платформы на 12.10.2026. Менеджер взят из договора на платформе; если договора там нет — из списка фин-отдела. «Без менеджера» — доплаты по июльским договорам, где менеджер на платформе не назначен. «Не определён» — два договора Uzum Nasiya, которых нет на платформе.</p>
 </section>
 
 <section>
@@ -202,23 +219,24 @@ const CH = [
   {name:'Способ не указан', sub:'по списку фин-отдела', n:1, gross:1000000, net:1000000},
 ];
 const MANAGERS = [
-  {name:'Анвар', n:6, c:6, gross:32000000, net:23970000},
-  {name:'Мадина', n:4, c:4, gross:24000000, net:16560000},
-  {name:'Барно', n:4, c:4, gross:21600000, net:15240000},
-  {name:'Венера', n:7, c:7, gross:16900000, net:12940000},
-  {name:'Амирхон', n:7, c:4, gross:15500000, net:14900000},
-  {name:'Зухра', n:3, c:3, gross:15000000, net:12830000},
-  {name:'Комрон', n:3, c:3, gross:14500000, net:12640000},
-  {name:'Мирсаид', n:3, c:3, gross:13000000, net:11140000},
-  {name:'Аббос', n:3, c:3, gross:7200000, net:5820000},
-  {name:'Мухриддин', n:1, c:1, gross:6000000, net:4140000},
-  {name:'Гафура', n:1, c:1, gross:1700000, net:1700000},
-  {name:'Умид', n:1, c:1, gross:1500000, net:1500000},
-  {name:'Ойгуль', n:1, c:1, gross:1500000, net:1500000},
-  {name:'Кумысбек', n:1, c:1, gross:500000, net:500000},
-  {name:'Без менеджера', n:2, c:2, gross:4223000, net:4223000},
-  {name:'Не определён', n:2, c:2, gross:3000000, net:2920000},
+  {name:'Анвар', n:6, c:6, gross:32000000, net:23970000, ok:21000000, wait:11000000, miss:0, nw:2, nm:0},
+  {name:'Мадина', n:4, c:4, gross:24000000, net:16560000, ok:18000000, wait:0, miss:6000000, nw:0, nm:1},
+  {name:'Барно', n:4, c:4, gross:21600000, net:15240000, ok:15600000, wait:6000000, miss:0, nw:1, nm:0},
+  {name:'Венера', n:7, c:7, gross:16900000, net:12940000, ok:12000000, wait:4100000, miss:800000, nw:4, nm:1},
+  {name:'Амирхон', n:7, c:4, gross:15500000, net:14900000, ok:6500000, wait:6000000, miss:3000000, nw:2, nm:1},
+  {name:'Зухра', n:3, c:3, gross:15000000, net:12830000, ok:7000000, wait:8000000, miss:0, nw:2, nm:0},
+  {name:'Комрон', n:3, c:3, gross:14500000, net:12640000, ok:8500000, wait:6000000, miss:0, nw:1, nm:0},
+  {name:'Мирсаид', n:3, c:3, gross:13000000, net:11140000, ok:13000000, wait:0, miss:0, nw:0, nm:0},
+  {name:'Аббос', n:3, c:3, gross:7200000, net:5820000, ok:6800000, wait:400000, miss:0, nw:1, nm:0},
+  {name:'Мухриддин', n:1, c:1, gross:6000000, net:4140000, ok:6000000, wait:0, miss:0, nw:0, nm:0},
+  {name:'Гафура', n:1, c:1, gross:1700000, net:1700000, ok:1700000, wait:0, miss:0, nw:0, nm:0},
+  {name:'Умид', n:1, c:1, gross:1500000, net:1500000, ok:1500000, wait:0, miss:0, nw:0, nm:0},
+  {name:'Ойгуль', n:1, c:1, gross:1500000, net:1500000, ok:0, wait:0, miss:1500000, nw:0, nm:1},
+  {name:'Кумысбек', n:1, c:1, gross:500000, net:500000, ok:0, wait:500000, miss:0, nw:1, nm:0},
+  {name:'Без менеджера', n:2, c:2, gross:4223000, net:4223000, ok:0, wait:0, miss:4223000, nw:0, nm:2},
+  {name:'Не определён', n:2, c:2, gross:3000000, net:2920000, ok:0, wait:0, miss:3000000, nw:0, nm:2},
 ];
+const STATUS = {ok:{n:27,sum:117600000}, wait:{n:14,sum:42000000}, miss:{n:8,sum:18523000}};
 const TERMS = [
   {name:'Toza · 12 месяцев', n:17, gross:104000000, net:71760000},
   {name:'Toza · 6 месяцев',  n:1,  gross:6000000,   net:4620000},
@@ -268,14 +286,17 @@ $('rows').innerHTML = CH.map(c => {
 // менеджеры
 (function(){
   const max = Math.max(...MANAGERS.map(m => m.gross));
+  const seg = (v, cls) => v ? `<div class="${cls}" style="width:${v / max * 100}%"></div>` : '';
   $('managers').innerHTML = MANAGERS.map(m => {
-    const fee = m.gross - m.net;
+    const open = m.wait + m.miss;
     return `<div class="row">
       <div class="name">${m.name}<i>${m.n} ${plural(m.n,'оплата','оплаты','оплат')} · ${m.c} ${plural(m.c,'клиент','клиента','клиентов')}</i></div>
-      <div class="track"><div class="net${fee ? '' : ' solo'}" style="width:${m.net / max * 100}%"></div>${fee ? `<div class="fee" style="width:${fee / max * 100}%"></div>` : ''}</div>
-      <div class="val num">${mln(m.gross, m.gross % 1e5 ? 2 : 1)} млн<i>${fee ? 'школе ' + mln(m.net, 2) + ' млн' : 'школе полностью'}</i></div>
+      <div class="track segs">${seg(m.ok,'seg-c')}${seg(m.wait,'seg-u')}${seg(m.miss,'seg-x')}</div>
+      <div class="val num">${mln(m.gross, m.gross % 1e5 ? 2 : 1)} млн<i>школе ${mln(m.net, 2)} млн</i>${open ? `<i class="open">не подтв. ${mln(open, open % 1e5 ? 2 : 1)} млн</i>` : `<i>всё подтверждено</i>`}</div>
     </div>`;
   }).join('');
+  const put = (id, o) => { $(id).textContent = mln(o.sum) + ' млн'; $(id + 'N').textContent = o.n + ' ' + plural(o.n,'оплата','оплаты','оплат'); };
+  put('stOk', STATUS.ok); put('stWait', STATUS.wait); put('stMiss', STATUS.miss);
 })();
 
 // рассрочки по срокам
