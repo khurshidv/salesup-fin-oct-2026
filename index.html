@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sales Up — финансовый отчёт, 1–10 октября 2026</title>
+<style>
+:root{
+  --bg:#f5f4ef;--card:#ffffff;--ink:#16171b;--muted:#666b76;--line:#e3e1d9;
+  --accent:#e8590c;--accent-soft:#f9c9a8;
+  --c1:#e8590c;--c2:#6741d9;--c3:#1c7ed6;--c4:#2b8a3e;
+  --ok:#2b8a3e;--warn:#d9480f;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#111215;--card:#1a1c21;--ink:#f2f1ed;--muted:#9a9fab;--line:#2b2e36;
+  --accent:#ff8a4c;--accent-soft:#6b3a1c;
+  --c1:#ff8a4c;--c2:#a08bff;--c3:#5aa9f0;--c4:#62c37d;
+  --ok:#62c37d;--warn:#ff9f6b;
+}}
+*{box-sizing:border-box}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-text-size-adjust:100%}
+section{min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;padding:56px 16px 48px;max-width:1040px;margin:0 auto}
+h1{font-size:clamp(34px,7vw,72px);line-height:1.02;margin:0 0 12px;letter-spacing:-.02em}
+h2{font-size:clamp(24px,4vw,40px);line-height:1.1;margin:0 0 8px;letter-spacing:-.015em}
+.kicker{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.lead{color:var(--muted);font-size:clamp(15px,2vw,19px);max-width:720px;margin:0 0 24px}
+.num{font-variant-numeric:tabular-nums}
+.hero{font-size:clamp(52px,12vw,128px);font-weight:800;line-height:.95;letter-spacing:-.03em}
+.hero small{font-size:.32em;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:.2em}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.tile b{display:block;font-size:clamp(24px,3.6vw,36px);line-height:1.1;font-variant-numeric:tabular-nums}
+.tile span{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.rows{display:flex;flex-direction:column;gap:12px}
+.row{display:grid;grid-template-columns:150px 1fr 190px;gap:12px;align-items:center}
+.row .name{font-weight:600}
+.row .name i{display:block;font-style:normal;font-weight:400;color:var(--muted);font-size:12.5px}
+.track{height:26px;background:transparent;border-radius:6px;display:flex;overflow:hidden}
+.track .net{background:var(--accent);border-radius:6px 0 0 6px;min-width:3px}
+.track .fee{background:repeating-linear-gradient(135deg,var(--accent-soft) 0 5px,transparent 5px 9px);border:1px solid var(--accent-soft);border-left:0;border-radius:0 6px 6px 0}
+.track .net.solo{border-radius:6px}
+.row .val{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.row .val i{display:block;font-style:normal;font-weight:400;color:var(--muted);font-size:12.5px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:13px;margin:14px 0 0}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:14px;height:14px;border-radius:4px;display:inline-block;background:var(--accent)}
+.sw.fee{background:repeating-linear-gradient(135deg,var(--accent-soft) 0 4px,transparent 4px 7px);border:1px solid var(--accent-soft)}
+.two{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+.split{display:flex;height:64px;border-radius:12px;overflow:hidden;margin:14px 0 10px}
+.split div{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-variant-numeric:tabular-nums;padding:0 8px;text-align:center}
+.split .a{background:var(--ok)}
+.split .b{background:var(--warn)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fact b{font-size:28px;display:block;font-variant-numeric:tabular-nums;line-height:1.1}
+.fact span{color:var(--muted);font-size:13.5px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+svg{width:100%;height:auto;display:block}
+svg text{fill:var(--ink);font-family:inherit}
+svg .m{fill:var(--muted)}
+ul.notes{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px;max-width:820px}
+ul.notes li{margin:0 0 9px}
+ul.notes b{color:var(--ink)}
+.funnel{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.funnel .f{display:grid;grid-template-columns:132px 1fr 44px;gap:10px;align-items:center;font-size:14px}
+.funnel .f div.b{height:18px;border-radius:5px;background:var(--line)}
+.funnel .f.ok div.b{background:var(--ok)}
+.funnel .f b{text-align:right;font-variant-numeric:tabular-nums}
+nav{position:fixed;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px;z-index:5}
+nav a{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+nav a.on{background:var(--accent)}
+.foot{color:var(--muted);font-size:12.5px;margin-top:18px}
+@media (max-width:760px){
+  section{padding:40px 16px 36px}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .row{grid-template-columns:1fr auto;gap:4px 10px}
+  .row .track{grid-column:1 / -1;order:3;height:20px}
+  .two{grid-template-columns:1fr}
+  nav{display:none}
+}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+
+<section>
+  <div class="kicker">Sales Up Technologies</div>
+  <h1>Финансовый отчёт<br>1–10 октября 2026</h1>
+  <p class="lead">Сколько денег пришло, какими способами платили клиенты и сколько из этого школа получает на руки после процентов по рассрочкам.</p>
+  <p class="foot">Данные на 12.10.2026. Источники: кабинеты Toza Nasiya и Uzum Nasiya, уведомления мерчантов Click, Uzum Bank, Rahmat и Payme, список оплат фин-отдела, панель «Финансы» платформы. Листать — стрелками или прокруткой.</p>
+</section>
+
+<section>
+  <div class="kicker">Касса</div>
+  <h2>Школа получает на руки</h2>
+  <div class="hero num"><span id="heroNet"></span><small>млн сум</small></div>
+  <p class="lead" style="margin-top:14px">Клиенты оплатили <b class="num" id="heroGross"></b> млн. Разница <b class="num" id="heroFee"></b> млн — проценты по рассрочкам, которые школа закрывает за клиента.</p>
+  <div class="tiles">
+    <div class="tile"><b id="tOps"></b><span>оплат за 10 дней</span></div>
+    <div class="tile"><b id="tClients"></b><span>клиентов оплатили</span></div>
+    <div class="tile"><b id="tAvg"></b><span>средняя оплата, млн</span></div>
+    <div class="tile"><b id="tInst"></b><span>кассы — через рассрочки</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">Способы оплаты</div>
+  <h2>Откуда пришли деньги</h2>
+  <p class="lead">Длина полосы — сколько заплатили клиенты. Закрашенная часть доходит до школы, заштрихованная уходит рассрочке.</p>
+  <div class="card">
+    <div class="rows" id="rows"></div>
+    <div class="legend"><span><i class="sw"></i>получает школа</span><span><i class="sw fee"></i>процент рассрочки за счёт школы</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">Рассрочки</div>
+  <h2>От оплаты клиента до денег школы</h2>
+  <p class="lead">Через рассрочки идёт <b id="instShare"></b> всей кассы. На них же приходится вся потеря.</p>
+  <div class="two">
+    <div class="card"><div id="waterfall"></div></div>
+    <div class="card">
+      <b>Toza Nasiya: заявки за октябрь</b>
+      <div class="funnel" id="funnel"></div>
+      <p class="foot" style="margin-top:14px">Из 151 заявки до оформления дошли 18 — это 12%. Две трети заявок клиенты бросили, не закончив.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">Наличные</div>
+  <h2>Подтверждено и не подтверждено</h2>
+  <p class="lead">По панели «Финансы» платформы за 1–10 октября. Подтверждено — аналитик провёл оплату. Не подтверждено — менеджер записал наличные, но их ещё никто не сверил.</p>
+  <div class="card">
+    <div class="split" id="cashSplit"></div>
+    <div class="facts">
+      <div class="fact"><b><span class="dot" style="background:var(--ok)"></span><span id="cashOk"></span></b><span id="cashOkN"></span></div>
+      <div class="fact"><b><span class="dot" style="background:var(--warn)"></span><span id="cashNo"></span></b><span id="cashNoN"></span></div>
+    </div>
+  </div>
+  <p class="foot">В кабинете РОПа неподтверждённых наличных меньше: 2 оплаты на 3,5 млн. Одна оплата на 0,4 млн записана в договоре сентябрьской датой, поэтому кабинет РОПа относит её к сентябрю.</p>
+</section>
+
+<section>
+  <div class="kicker">Динамика</div>
+  <h2>Касса по дням</h2>
+  <p class="lead">Оплаты клиентов по дням, млн сум. Два пика — 3 и 7 октября, оба на рассрочках Toza Nasiya.</p>
+  <div class="card">
+    <div id="daily"></div>
+    <div class="legend" id="dailyLegend"></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">Как считали</div>
+  <h2>Источники и оговорки</h2>
+  <ul class="notes">
+    <li><b>Toza Nasiya</b> — 18 оформленных договоров из кабинета мерчанта. Школа получает 69% суммы: с договора на 6 млн приходит 4,14 млн.</li>
+    <li><b>Uzum Nasiya</b> — 12 активных договоров на 29,7 млн. Кабинет показывает сумму продаж 27,72 млн: разница 1,98 млн — это 33% с единственного договора на 12 месяцев. В кассу взята цифра кабинета.</li>
+    <li><b>Click, Uzum Bank, Rahmat</b> — успешные оплаты из уведомлений мерчантов. Комиссии эквайринга не вычтены. Через Payme в октябре оплат нет.</li>
+    <li><b>Перевод на карту и Variant Nasiya</b> — по списку фин-отдела, внешнего источника для проверки нет.</li>
+    <li><b>Наличные</b> — по платформе, вместе с неподтверждёнными. Без них касса на руки меньше на 3,9 млн.</li>
+    <li><b>Одна оплата на 1,0 млн</b> в списке фин-отдела без способа оплаты — включена отдельной строкой.</li>
+  </ul>
+</section>
+
+<script>
+const CH = [
+  {name:'Toza Nasiya',   sub:'рассрочка',            n:18, gross:110000000, net:75900000, inst:true},
+  {name:'Uzum Nasiya',   sub:'рассрочка',            n:12, gross:29700000,  net:27720000, inst:true},
+  {name:'Uzum Bank',     sub:'мерчант',              n:3,  gross:10500000,  net:10500000},
+  {name:'Перевод на карту', sub:'по списку фин-отдела', n:5, gross:8800000, net:8800000},
+  {name:'Наличные',      sub:'по платформе',         n:5,  gross:7900000,   net:7900000},
+  {name:'Rahmat',        sub:'мерчант',              n:2,  gross:4223000,   net:4223000},
+  {name:'Variant Nasiya',sub:'рассрочка',            n:1,  gross:4000000,   net:4000000, inst:true},
+  {name:'Click',         sub:'мерчант',              n:2,  gross:2000000,   net:2000000},
+  {name:'Способ не указан', sub:'по списку фин-отдела', n:1, gross:1000000, net:1000000},
+];
+const CLIENTS = 46;
+const CASH = {ok:{n:2,sum:4000000}, no:{n:3,sum:3900000}};
+const TOZA_FUNNEL = [['Отправлено заявок',151,false],['Не завершили',98,false],['Отказ',35,false],['Оформлено',18,true]];
+const DAYS = ['1 чт','2 пт','3 сб','4 вс','5 пн','6 вт','7 ср','8 чт','9 пт','10 сб'];
+const SERIES = [
+  {name:'Toza Nasiya', color:'var(--c1)', v:[6,0,19,0,5,6,31,7,24,12]},
+  {name:'Uzum Nasiya', color:'var(--c2)', v:[0,5.8,11.6,0,7.6,1.7,0,3,0,0]},
+  {name:'Click, Uzum Bank, Rahmat', color:'var(--c3)', v:[0,4.5,1.384,0,0.5,1.5,0,0,6,2.839]},
+  {name:'Наличные, карта и прочее', color:'var(--c4)', v:[7,0,1.5,0,1.5,0.8,8.5,0,2.4,0]},
+];
+
+const mln = (x, d=1) => (x/1e6).toFixed(d).replace('.', ',');
+const sum = (a, f) => a.reduce((s, x) => s + f(x), 0);
+const plural = (n, a, b, c) => { const m = n % 100, k = n % 10; return (m > 10 && m < 20) ? c : k === 1 ? a : (k > 1 && k < 5) ? b : c; };
+const $ = id => document.getElementById(id);
+
+const gross = sum(CH, c => c.gross), net = sum(CH, c => c.net), ops = sum(CH, c => c.n);
+const instGross = sum(CH.filter(c => c.inst), c => c.gross);
+$('heroNet').textContent = mln(net);
+$('heroGross').textContent = mln(gross);
+$('heroFee').textContent = mln(gross - net);
+$('tOps').textContent = ops;
+$('tClients').textContent = CLIENTS;
+$('tAvg').textContent = mln(gross / ops);
+$('tInst').textContent = Math.round(instGross / gross * 100) + '%';
+$('instShare').textContent = Math.round(instGross / gross * 100) + '%';
+
+// способы оплаты
+const maxG = Math.max(...CH.map(c => c.gross));
+$('rows').innerHTML = CH.map(c => {
+  const fee = c.gross - c.net;
+  const wNet = c.net / maxG * 100, wFee = fee / maxG * 100;
+  return `<div class="row">
+    <div class="name">${c.name}<i>${c.n} ${plural(c.n,'оплата','оплаты','оплат')} · ${c.sub}</i></div>
+    <div class="track"><div class="net${fee ? '' : ' solo'}" style="width:${wNet}%"></div>${fee ? `<div class="fee" style="width:${wFee}%"></div>` : ''}</div>
+    <div class="val num">${mln(c.gross, c.gross % 1e5 ? 2 : 1)} млн<i>${fee ? 'школе ' + mln(c.net, c.net % 1e5 ? 2 : 1) + ' млн' : 'школе полностью'}</i></div>
+  </div>`;
+}).join('');
+
+// водопад
+(function(){
+  const toza = CH[0], uzn = CH[1];
+  const steps = [
+    {l:'Оплатили клиенты', v:gross, from:0, to:gross, c:'var(--muted)'},
+    {l:'Процент Toza', v:-(toza.gross - toza.net), from:gross - (toza.gross - toza.net), to:gross, c:'var(--warn)'},
+    {l:'Процент Uzum', v:-(uzn.gross - uzn.net), from:net, to:net + (uzn.gross - uzn.net), c:'var(--warn)'},
+    {l:'Получает школа', v:net, from:0, to:net, c:'var(--accent)'},
+  ];
+  const W = 520, H = 300, top = 34, bot = 44, bw = 86, gap = (W - 4 * bw) / 5;
+  const y = v => top + (H - top - bot) * (1 - v / gross);
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="От оплат клиентов до денег школы">`;
+  s += `<line x1="0" x2="${W}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line)"/>`;
+  steps.forEach((p, i) => {
+    const x = gap + i * (bw + gap), y1 = y(p.to), h = Math.max(3, y(p.from) - y(p.to));
+    s += `<rect x="${x}" y="${y1}" width="${bw}" height="${h}" rx="5" fill="${p.c}"/>`;
+    s += `<text x="${x + bw / 2}" y="${y1 - 8}" text-anchor="middle" font-size="17" font-weight="700">${p.v < 0 ? '−' : ''}${mln(Math.abs(p.v))}</text>`;
+    s += `<text class="m" x="${x + bw / 2}" y="${H - 20}" text-anchor="middle" font-size="12.5">${p.l}</text>`;
+  });
+  s += '</svg>';
+  $('waterfall').innerHTML = s;
+})();
+
+// воронка Toza
+$('funnel').innerHTML = TOZA_FUNNEL.map(([l, v, ok]) =>
+  `<div class="f${ok ? ' ok' : ''}"><span>${l}</span><div><div class="b" style="width:${Math.max(2, v / 151 * 100)}%"></div></div><b>${v}</b></div>`).join('');
+
+// наличные
+(function(){
+  const t = CASH.ok.sum + CASH.no.sum;
+  $('cashSplit').innerHTML = `<div class="a" style="width:${CASH.ok.sum / t * 100}%">${mln(CASH.ok.sum)} млн</div><div class="b" style="width:${CASH.no.sum / t * 100}%">${mln(CASH.no.sum)} млн</div>`;
+  $('cashOk').textContent = mln(CASH.ok.sum) + ' млн';
+  $('cashOkN').textContent = `подтверждено · ${CASH.ok.n} ${plural(CASH.ok.n,'оплата','оплаты','оплат')}`;
+  $('cashNo').textContent = mln(CASH.no.sum) + ' млн';
+  $('cashNoN').textContent = `не подтверждено · ${CASH.no.n} ${plural(CASH.no.n,'оплата','оплаты','оплат')}`;
+})();
+
+// по дням
+(function(){
+  const W = 720, H = 330, top = 30, bot = 40, left = 8, n = DAYS.length;
+  const totals = DAYS.map((_, i) => sum(SERIES, s => s.v[i]));
+  const max = Math.max(...totals), slot = (W - left * 2) / n, bw = slot * 0.62;
+  const h = v => (H - top - bot) * v / max;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Касса по дням">`;
+  s += `<line x1="0" x2="${W}" y1="${H - bot}" y2="${H - bot}" stroke="var(--line)"/>`;
+  DAYS.forEach((d, i) => {
+    const x = left + i * slot + (slot - bw) / 2;
+    let yy = H - bot;
+    SERIES.forEach(se => {
+      const hh = h(se.v[i]);
+      if (hh > 0) { yy -= hh; s += `<rect x="${x}" y="${yy}" width="${bw}" height="${Math.max(hh - 1.5, 1)}" rx="2.5" fill="${se.color}"/>`; }
+    });
+    s += `<text x="${x + bw / 2}" y="${yy - 7}" text-anchor="middle" font-size="15" font-weight="700">${totals[i] ? totals[i].toFixed(1).replace('.', ',') : '—'}</text>`;
+    s += `<text class="m" x="${x + bw / 2}" y="${H - 16}" text-anchor="middle" font-size="13">${d}</text>`;
+  });
+  s += '</svg>';
+  $('daily').innerHTML = s;
+  $('dailyLegend').innerHTML = SERIES.map(se => `<span><i class="sw" style="background:${se.color}"></i>${se.name}</span>`).join('');
+})();
+
+// навигация
+(function(){
+  const secs = [...document.querySelectorAll('section')], nav = $('nav');
+  secs.forEach((sc, i) => { sc.id = 's' + (i + 1); const a = document.createElement('a'); a.href = '#s' + (i + 1); a.setAttribute('aria-label', 'Слайд ' + (i + 1)); nav.appendChild(a); });
+  const dots = [...nav.children];
+  const cur = () => { const m = innerHeight / 2; return Math.max(0, secs.findIndex(sc => { const r = sc.getBoundingClientRect(); return r.top <= m && r.bottom > m; })); };
+  const mark = () => dots.forEach((d, i) => d.classList.toggle('on', i === cur()));
+  addEventListener('scroll', mark, {passive:true}); mark();
+  addEventListener('keydown', e => {
+    const fwd = ['ArrowDown','ArrowRight','PageDown',' '].includes(e.key), back = ['ArrowUp','ArrowLeft','PageUp'].includes(e.key);
+    if (!fwd && !back) return;
+    e.preventDefault();
+    secs[Math.min(secs.length - 1, Math.max(0, cur() + (fwd ? 1 : -1)))].scrollIntoView();
+  });
+})();
+</script>
+</body>
+</html>
