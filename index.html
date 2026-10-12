@@ -119,14 +119,24 @@ nav a.on{background:var(--accent)}
   <div class="kicker">Рассрочки</div>
   <h2>От оплаты клиента до денег школы</h2>
   <p class="lead">Через рассрочки идёт <b id="instShare"></b> всей кассы. На них же приходится вся потеря.</p>
-  <div class="two">
-    <div class="card"><div id="waterfall"></div></div>
-    <div class="card">
-      <b>Toza Nasiya: заявки за октябрь</b>
-      <div class="funnel" id="funnel"></div>
-      <p class="foot" style="margin-top:14px">Из 151 заявки до оформления дошли 18 — это 12%. Две трети заявок клиенты бросили, не закончив.</p>
-    </div>
+  <div class="card"><div id="waterfall" style="max-width:620px;margin:0 auto"></div></div>
+</section>
+
+<section>
+  <div class="kicker">Рассрочки по срокам</div>
+  <h2>Сколько школа отдаёт на каждом сроке</h2>
+  <p class="lead">Выплата школе взята из кабинетов по каждому договору. Дороже всего обходится Toza на 12 месяцев: школа отдаёт 31% цены. В Uzum Nasiya на 6 и 12 месяцев процент платит сам клиент.</p>
+  <div class="card">
+    <div class="rows" id="terms"></div>
+    <div class="legend"><span><i class="sw"></i>получает школа</span><span><i class="sw fee"></i>процент за счёт школы</span></div>
   </div>
+</section>
+
+<section>
+  <div class="kicker">Toza Nasiya</div>
+  <h2>Заявки за октябрь</h2>
+  <p class="lead">Из 151 заявки до оформления дошли 18 — это 12%. Две трети заявок клиенты бросили, не закончив.</p>
+  <div class="card"><div class="funnel" id="funnel"></div></div>
 </section>
 
 <section>
@@ -157,8 +167,8 @@ nav a.on{background:var(--accent)}
   <div class="kicker">Как считали</div>
   <h2>Источники и оговорки</h2>
   <ul class="notes">
-    <li><b>Toza Nasiya</b> — 18 оформленных договоров из кабинета мерчанта. Школа получает 69% суммы: с договора на 6 млн приходит 4,14 млн.</li>
-    <li><b>Uzum Nasiya</b> — 12 активных договоров на 29,7 млн. Кабинет показывает сумму продаж 27,72 млн: разница 1,98 млн — это 33% с единственного договора на 12 месяцев. В кассу взята цифра кабинета.</li>
+    <li><b>Toza Nasiya</b> — 18 оформленных договоров. Выплата школе взята из кабинета по каждому договору: на 12 месяцев школа получает 69% цены (с 6 млн — 4,14 млн), на 6 месяцев — 77% (4,62 млн). 17 договоров оформлены на 12 месяцев, один на 6.</li>
+    <li><b>Uzum Nasiya</b> — 12 активных договоров на 29,7 млн, школе 27,72 млн. По девяти договорам «0-0-3» (3 месяца без переплаты для клиента) школа отдаёт 10%. На 6 и 12 месяцев процент платит клиент, школа получает цену полностью.</li>
     <li><b>Click, Uzum Bank, Rahmat</b> — успешные оплаты из уведомлений мерчантов. Комиссии эквайринга не вычтены. Через Payme в октябре оплат нет.</li>
     <li><b>Перевод на карту и Variant Nasiya</b> — по списку фин-отдела, внешнего источника для проверки нет.</li>
     <li><b>Наличные</b> — по платформе, вместе с неподтверждёнными. Без них касса на руки меньше на 3,9 млн.</li>
@@ -168,7 +178,7 @@ nav a.on{background:var(--accent)}
 
 <script>
 const CH = [
-  {name:'Toza Nasiya',   sub:'рассрочка',            n:18, gross:110000000, net:75900000, inst:true},
+  {name:'Toza Nasiya',   sub:'рассрочка',            n:18, gross:110000000, net:76380000, inst:true},
   {name:'Uzum Nasiya',   sub:'рассрочка',            n:12, gross:29700000,  net:27720000, inst:true},
   {name:'Uzum Bank',     sub:'мерчант',              n:3,  gross:10500000,  net:10500000},
   {name:'Перевод на карту', sub:'по списку фин-отдела', n:5, gross:8800000, net:8800000},
@@ -177,6 +187,13 @@ const CH = [
   {name:'Variant Nasiya',sub:'рассрочка',            n:1,  gross:4000000,   net:4000000, inst:true},
   {name:'Click',         sub:'мерчант',              n:2,  gross:2000000,   net:2000000},
   {name:'Способ не указан', sub:'по списку фин-отдела', n:1, gross:1000000, net:1000000},
+];
+const TERMS = [
+  {name:'Toza · 12 месяцев', n:17, gross:104000000, net:71760000},
+  {name:'Toza · 6 месяцев',  n:1,  gross:6000000,   net:4620000},
+  {name:'Uzum · 0-0-3',      n:9,  gross:19800000,  net:17820000},
+  {name:'Uzum · 6 месяцев',  n:2,  gross:3900000,   net:3900000},
+  {name:'Uzum · 12 месяцев', n:1,  gross:6000000,   net:6000000},
 ];
 const CLIENTS = 46;
 const CASH = {ok:{n:2,sum:4000000}, no:{n:3,sum:3900000}};
@@ -216,6 +233,19 @@ $('rows').innerHTML = CH.map(c => {
     <div class="val num">${mln(c.gross, c.gross % 1e5 ? 2 : 1)} млн<i>${fee ? 'школе ' + mln(c.net, c.net % 1e5 ? 2 : 1) + ' млн' : 'школе полностью'}</i></div>
   </div>`;
 }).join('');
+
+// рассрочки по срокам
+(function(){
+  const max = Math.max(...TERMS.map(t => t.gross));
+  $('terms').innerHTML = TERMS.map(t => {
+    const fee = t.gross - t.net, pct = Math.round(fee / t.gross * 100);
+    return `<div class="row">
+      <div class="name">${t.name}<i>${t.n} ${plural(t.n,'договор','договора','договоров')} · ${fee ? 'школа отдаёт ' + pct + '%' : 'процент платит клиент'}</i></div>
+      <div class="track"><div class="net${fee ? '' : ' solo'}" style="width:${t.net / max * 100}%"></div>${fee ? `<div class="fee" style="width:${fee / max * 100}%"></div>` : ''}</div>
+      <div class="val num">${mln(t.gross)} млн<i>${fee ? 'школе ' + mln(t.net, 2) + ' млн' : 'школе полностью'}</i></div>
+    </div>`;
+  }).join('');
+})();
 
 // водопад
 (function(){
